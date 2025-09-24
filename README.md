@@ -1,29 +1,36 @@
-ESXi Host Management Script
+📁 Datastore Renaming Automation Script
 
-This PowerShell script automates the management of ESXi hosts by enabling SSH services and ensuring hosts exit maintenance mode using VMware PowerCLI.
+This PowerShell script automates the renaming of datastores in a VMware vSphere environment using VMware PowerCLI. It allows administrators to efficiently rename datastores based on a specified naming convention, enhancing consistency and manageability across the infrastructure.
 
 🔧 Features
 
-Connects to specified ESXi hosts using provided credentials.
+Dynamic Renaming: Automatically renames datastores by inserting a specified suffix (e.g., -xr-srv001) after the site code in the datastore name.
 
-Checks if each host is in maintenance mode and exits it if true.
+Flexible Input: Prompts the user for the vCenter server's FQDN or IP address and the site code at runtime, eliminating the need for hardcoded values.
 
-Enables and starts the SSH service on each host.
+Selective Processing: Targets only datastores whose names start with the specified site code, ensuring that only relevant datastores are renamed.
 
-Sets the SSH service to start automatically on boot.
+Safety Checks: Skips renaming for datastores that already contain the specified suffix, preventing redundant operations.
 
-🧰 Prerequisites
+⚙️ Prerequisites
 
 PowerShell 5.1 or later.
 
 VMware PowerCLI module installed.
 
-Valid credentials with appropriate permissions to manage ESXi hosts.
+Valid credentials with appropriate permissions to manage datastores in the vSphere environment.
 
-⚙️ Usage
+📝 Usage Instructions
 
 Open PowerShell as an administrator.
 
 Run the script by entering:
 
-.\Enable-SSH-ESXi.ps1
+.\Rename-Datastore.ps1
+
+
+When prompted, enter the vCenter server's FQDN or IP address.
+
+Provide the site code when prompted.
+
+The script will process each datastore, renaming those that match the specified criteria.
